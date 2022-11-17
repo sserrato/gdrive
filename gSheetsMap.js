@@ -75,7 +75,7 @@ function getGoogleMapsLink(longLat) {
       .setDestination(destination)
       .setMode(mode)
       .getDirections();
-      Utilities.sleep(1000);
+     // Utilities.sleep(1000);
     if (!data) {
       throw new Error('No route found!');
     }
