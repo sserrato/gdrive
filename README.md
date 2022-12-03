@@ -12,6 +12,16 @@ This is JavaScript to include date as an auto-updated field upon doc load. Acces
 This enables a function to insert directions into a cell based on an address in an other cell. ```=GOOGLEMAPS_DURATION($D$28,D18,"walking")``` where the first argument is an address (the from) and the second argument is the destination. The third argument is a string "walking", "driving", 
 "bicycling" or "transit". 
 
+## Google Sheets - Get a list of all your Google Drive files
+
+This helps you organize your Google Drive files. It adds the ```=getMyFilesFromDrive``` function which lists out your Google Drive files with the following colums:
+- ["ID", 
+- "Name",
+- "Url",
+- "Type", 
+- "DateCreated",
+- "DateUpdated"
+
 
 ## Google Sheets LinkedIn Search
 
