@@ -9,9 +9,9 @@ function createImageGallery() {
   const folder = DriveApp.getFolderById(FOLDER_ID);
   const files = folder.getFiles();
 
-  // Delete the default first slide
+  // Remove the default blank slide only if this is a fresh presentation
   const slides = presentation.getSlides();
-  if (slides.length > 0) {
+  if (slides.length === 1 && slides[0].getPageElements().length === 0) {
     slides[0].remove();
   }
 

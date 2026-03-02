@@ -31,8 +31,12 @@
         response = UrlFetchApp.fetch("https://www.googleapis.com/customsearch/v1?key="+key+"&q="+search+"&cx="+searchEngineId, options);
         
         // Parse linkedin URL and Name
-        let url = JSON.parse(response).items[0].formattedUrl
-        let title = JSON.parse(response).items[0].title.split("-")[0]
+        var parsed = JSON.parse(response);
+        if (!parsed.items || parsed.items.length === 0) {
+          return [['No results found', '']];
+        }
+        let url = parsed.items[0].formattedUrl;
+        let title = parsed.items[0].title.split("-")[0];
         
         
         // display the results in 2 columns

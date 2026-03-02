@@ -30,14 +30,14 @@ function getGoogleMapsLink(longLat) {
         }
       }
       else {
-        return "error";
+        return null;
       }
   }
   
   // The cache key for "New York" and "new york  " should be same
   const md5 = (key = '') => {
     const code = key.toLowerCase().replace(/\s/g, '');
-    return Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, key)
+    return Utilities.computeDigest(Utilities.DigestAlgorithm.MD5, code)
       .map((char) => (char + 256).toString(16).slice(-2))
       .join('');
   };
