@@ -50,7 +50,15 @@ function extractTextFromSlides() {
       markdownOutput += '\n'; // Add a line break after each slide
   }
 
-  // Create a new text file in Google Drive with the extracted text
-  var file = DriveApp.createFile('ExtractedSlidesMarkdown.md', markdownOutput);
+  // Overwrite existing file if it exists, otherwise create a new one
+  var fileName = 'ExtractedSlidesMarkdown.md';
+  var existing = DriveApp.getFilesByName(fileName);
+  var file;
+  if (existing.hasNext()) {
+    file = existing.next();
+    file.setContent(markdownOutput);
+  } else {
+    file = DriveApp.createFile(fileName, markdownOutput);
+  }
   Logger.log('Markdown text extracted and saved to: ' + file.getUrl());
 }
