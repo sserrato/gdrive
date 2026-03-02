@@ -1,7 +1,11 @@
 function getMyFilesFromDrive() {
   var myFiles = DriveApp.searchFiles('"me" in owners');
   var sheet = SpreadsheetApp.getActive().getSheetByName("Files");
-  sheet.clear();
+  if (!sheet) {
+    sheet = SpreadsheetApp.getActive().insertSheet("Files");
+  } else {
+    sheet.clear();
+  }
   var rows = [];
   rows.push(["ID", "Name", "Url", "Type", "DateCreated", "DateUpdated"]);
   while(myFiles.hasNext()) {
